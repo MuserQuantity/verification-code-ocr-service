@@ -79,7 +79,7 @@ async def read_verification_code(image_data: ImageData):
         image = convert_to_white_background(image)
         
         # 保存为JPG
-        jpg_path = f"/app/captcha/captcha_{request_id}.jpg"
+        jpg_path = f"./captcha/captcha_{request_id}.jpg"
         image.save(jpg_path, 'JPEG', quality=95)
         # 重新读取图片
         image_bytes = open(jpg_path, "rb").read()
