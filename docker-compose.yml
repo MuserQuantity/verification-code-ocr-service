@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  ocr-service:
+    build: .
+    ports:
+      - "8000:8000"
+    container_name: verification-code-ocr
+    restart: unless-stopped
+    volumes:
+      - ./captcha:/app/captcha
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3 
